@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Posting Designs</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --bg:#0d0d12;
+      --card:#15151d;
+      --text:#f4f4f4;
+      --muted:#9d9da8;
+      --accent:#ff5a36;
+      --border:rgba(255,255,255,0.08);
+      --radius:28px;
+      --max-width:1300px;
+    }
+
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family: "Montserrat", sans-serif;
+      overflow-x:hidden;
+      line-height:1.7;
+    }
+
+    img{
+      width:100%;
+      display:block;
+      object-fit:cover;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      max-width:var(--max-width);
+      margin:auto;
+      padding:40px 24px 100px;
+    }
+
+    /* HEADER */
+
+    .top-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:70px;
+    }
+
+    .logo{
+      font-family: "Montserrat", sans-serif;
+      font-size:30px;
+      letter-spacing:-0.03em;
+    }
+
+    .back-btn{
+      padding:12px 20px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.05);
+      transition:0.3s ease;
+      font-size:14px;
+    }
+
+    .back-btn:hover{
+      transform:translateY(-3px);
+      background:rgba(255,255,255,0.08);
+    }
+
+    /* HERO */
+
+    .hero{
+      margin-bottom:80px;
+    }
+
+    .hero span{
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:0.25em;
+      font-size:12px;
+      display:block;
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      font-family: "Montserrat", sans-serif;
+      font-size:clamp(3rem,7vw,6rem);
+      line-height:0.95;
+      letter-spacing:-0.05em;
+      margin-bottom:24px;
+    }
+
+    .hero p{
+      max-width:720px;
+      color:var(--muted);
+      font-size:1.05rem;
+    }
+
+    /* SHOWCASE SECTION */
+
+    .showcase-section{
+      padding:70px 40px;
+      border-radius:32px;
+      margin-top:90px;
+      border:1px solid var(--border);
+      overflow:hidden;
+    }
+
+    .showcase-section.primary{
+      background:linear-gradient(
+        180deg,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.01)
+      );
+    }
+
+    .showcase-section.secondary{
+     background:linear-gradient(
+        180deg,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.01)
+      );
+/* 
+      border-color:rgba(255,90,54,0.2); */
+    }
+
+    /* SECTION TOP */
+
+    .section-top{
+      text-align:center;
+      margin-bottom:50px;
+    }
+
+    .section-top span{
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:0.22em;
+      font-size:12px;
+      display:block;
+      margin-bottom:14px;
+    }
+
+    .section-top h2{
+      font-family: "Montserrat", sans-serif;
+      font-size:clamp(2rem,4vw,4rem);
+      letter-spacing:-0.04em;
+    }
+
+    /* IMAGE GRID */
+
+    .design-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-bottom:50px;
+    }
+
+    .design-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      overflow:hidden;
+      transition:0.35s ease;
+    }
+
+    .design-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(255,90,54,0.4);
+      box-shadow:0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .design-card img{
+      height:720px;
+    }
+
+    /* DESCRIPTION */
+
+    .description{
+      max-width:900px;
+      margin:auto;
+      text-align:center;
+    }
+
+    .description h3{
+      font-family: "Montserrat", sans-serif;
+      font-size:clamp(1.8rem,3vw,3rem);
+      margin-bottom:22px;
+      letter-spacing:-0.03em;
+    }
+
+    .description p{
+      color:var(--muted);
+      font-size:1.03rem;
+      margin-bottom:18px;
+    }
+
+    /* FOOTER */
+
+    .footer{
+      padding-top:110px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .design-grid{
+        grid-template-columns:1fr;
+      }
+
+      .design-card img{
+        height:580px;
+      }
+
+      .showcase-section{
+        padding:50px 24px;
+      }
+
+    }
+
+    @media(max-width:640px){
+
+      .container{
+        padding-inline:20px;
+      }
+
+      .top-bar{
+        margin-bottom:50px;
+      }
+
+      .hero{
+        margin-bottom:50px;
+      }
+
+      .design-card img{
+        height:460px;
+      }
+
+      .showcase-section{
+        margin-top:70px;
+        padding:40px 18px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+
+    <div class="top-bar">
+
+      <div class="logo">
+        Parmod Chauhan
+      </div>
+
+      <a href="index.html" class="back-btn">
+        ← Back
+      </a>
+
+    </div>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <span>Creative Showcase</span>
+
+      <h1>
+        Packaging Designs<br>
+        
+      </h1>
+
+      <p>
+        A premium packaging design crafted to reflect elegance, sophistication, 
+        and modern aesthetics. The clean layout, refined typography, and balanced 
+        visual elements create a luxurious unboxing experience while enhancing 
+        the product’s identity and shelf appeal.
+      </p>
+
+    </section>
+
+    <!-- FIRST SECTION -->
+
+    <section class="showcase-section primary">
+
+      <div class="section-top">
+
+        <!-- <span>Wellness Campaign</span> -->
+
+        <h2>
+          Velkris Packaging Design
+        </h2>
+
+      </div>
+
+      <div class="design-grid">
+
+        <div class="design-card">
+          <img
+            src="images/Velkris.jpg.jpeg"
+            alt="Posting Design 1"
+          >
+        </div>
+
+        <div class="design-card">
+          <img
+            src="images/Velkris_Mockup1.jpg.jpeg"
+            alt="Posting Design 2"
+          >
+        </div>
+
+      </div>
+
+      <div class="description">
+
+        <h3>
+          About Packaging Design
+        </h3>
+
+        <p>
+          This packaging design for Velkris explores a luxury editorial
+          approach to anti-aging skincare through refined typography, 
+          minimalist composition, and vintage-inspired illustration. 
+          The warm neutral palette and elongated structural layout create 
+          a timeless visual identity that feels calm, sophisticated, and 
+          premium.
+        </p>
+
+        <!-- <p>
+          The overall visual system was designed to create a premium and
+          motivating wellness identity across digital platforms.
+        </p> -->
+
+      </div>
+
+    </section>
+
+    <!-- SECOND SECTION -->
+
+    <section class="showcase-section secondary">
+
+      <div class="section-top">
+
+        <!-- <span>Logistics Campaign</span> -->
+
+        <h2>
+          Flora Packaging Design
+        </h2>
+
+      </div>
+
+      <div class="design-grid">
+
+        <div class="design-card">
+          <img
+            src="images/Flora3.jpg.jpeg"
+            alt="Posting Design 3"
+          >
+        </div>
+
+        <div class="design-card">
+          <img
+            src="images/Flora_Mockup.jpg.jpeg"
+            alt="Posting Design 4"
+          >
+        </div>
+
+      </div>
+
+      <div class="description">
+
+        <h3>
+          About Packaging Design
+        </h3>
+
+        <p>
+          Flora is a premium perfume packaging design inspired by timeless 
+          floral elegance and soft femininity. The design combines delicate 
+          botanical illustrations with refined typography to create a 
+          luxurious and graceful visual identity. Warm nude-beige tones 
+          paired with deep burgundy accents enhance the sophisticated 
+          aesthetic while maintaining a soft romantic feel. The tall 
+          vertical layout complements the sleek perfume bottle structure, 
+          giving the packaging a modern yet classic luxury fragrance appeal. 
+          Crafted to feel elegant, artistic, and premium, the design reflects 
+          beauty, delicacy, and individuality in every detail.
+        </p>
+
+        <!-- <p>
+          The orange-accented design language helps create a powerful
+          and recognizable digital presence while maintaining a clean
+          and corporate aesthetic.
+        </p> -->
+
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+      © 2026 — Designed with modern editorial aesthetics.
+    </footer>
+
+  </div>
+
+</body>
+</html>

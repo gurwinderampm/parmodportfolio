@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Wegosmile — Healthcare Platform Case Study</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #070312;
+      --surface: #11111d;
+      --surface-light: #181829;
+      --text: #f4f2ef;
+      --muted: #9f9cab;
+      --accent: #ff2b3a;
+      --border: rgba(255,255,255,0.08);
+      --radius: 28px;
+      --max-width: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(255,43,58,0.14), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.04), transparent 20%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Montserrat", sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 32px 24px 100px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .logo {
+      font-family: "Montserrat", sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+
+    .back-btn {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: 0.3s ease;
+      font-size: 14px;
+    }
+
+    .back-btn:hover {
+      color: white;
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.09);
+    }
+
+    .hero {
+      padding-bottom: 90px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-tag {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-size: 12px;
+      margin-bottom: 22px;
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      margin-bottom: 28px;
+      letter-spacing: -0.05em;
+      max-width: 900px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      transition: 0.3s ease;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
+    }
+
+    .section {
+      padding-top: 100px;
+    }
+
+    .section-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .section-row.reverse .section-image {
+      order: -1;
+    }
+
+    .section-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 12px;
+      margin-bottom: 18px;
+      display: inline-block;
+    }
+
+    .section-content h2 {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1;
+      margin-bottom: 24px;
+      letter-spacing: -0.04em;
+    }
+
+    .section-content p {
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-size: 1.02rem;
+    }
+
+    .section-image {
+      position: relative;
+    }
+
+    .section-image img {
+      border-radius: 30px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      transition: 0.35s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,43,58,0.4);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 14px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 18px;
+    }
+
+    .card small {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.85rem;
+    }
+
+    .footer {
+      padding-top: 100px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .section-row {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .section-row.reverse .section-image {
+        order: 0;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        line-height: 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding-inline: 20px;
+      }
+
+      .header {
+        margin-bottom: 50px;
+      }
+
+      .hero {
+        padding-bottom: 70px;
+      }
+
+      .section {
+        padding-top: 80px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header class="header">
+      <div class="logo">Wegosmile</div>
+      <a href="index.html" class="back-btn">← Back to portfolio</a>
+    </header>
+
+    <section class="hero">
+      <span class="hero-tag">Featured Project</span>
+      <h1>Wegosmile Healthcare Platform</h1>
+      <p>
+        An innovative dental care platform with intuitive appointment booking and patient management. 
+        Focused on creating a seamless user experience for healthcare providers and patients alike, 
+        connecting quality care with convenient access.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">View Full Case Study</a>
+        <a href="#explore" class="btn btn-secondary">Explore Project</a>
+      </div>
+    </section>
+
+    <section class="section" id="explore">
+      <div class="section-row">
+        <div class="section-content">
+          <h2>Platform Concept</h2>
+          <p>
+            Wegosmile was developed to bridge the gap between dental providers and patients seeking quality care. 
+            The platform simplifies appointment scheduling, patient communication, and health record management 
+            into one intuitive interface.
+          </p>
+          <p>
+            By prioritizing user-centric design and accessibility, Wegosmile makes healthcare more convenient 
+            while maintaining the professionalism and security required in the medical industry.
+          </p>
+        </div>
+        <div class="section-image">
+          <img src="https://picsum.photos/seed/wegosmile-platform/900/1200" alt="Wegosmile Platform" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-row reverse">
+        <div class="section-content">
+          <h2>Patient Experience</h2>
+          <p>
+            Patients can easily book appointments, view provider profiles, access appointment reminders, 
+            and manage their health records—all from a clean, responsive interface designed for mobile and desktop users.
+          </p>
+          <p>
+            The design emphasizes trust and transparency, making healthcare feel approachable and stress-free 
+            rather than intimidating or complex.
+          </p>
+        </div>
+        <div class="section-image">
+          <img src="https://picsum.photos/seed/wegosmile-ux/900/1200" alt="Patient Interface" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-row">
+        <div class="section-content">
+          <h2>Provider Dashboard</h2>
+          <p>
+            Healthcare providers get a powerful yet simple dashboard to manage their practice, track patient interactions, 
+            and maintain a professional online presence.
+          </p>
+        </div>
+        <div class="section-image">
+          <img src="https://picsum.photos/seed/wegosmile-provider/900/1200" alt="Provider Dashboard" />
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      © 2026 Wegosmile — Connecting quality care with convenient access.
+    </footer>
+
+  </div>
+
+</body>
+</html>

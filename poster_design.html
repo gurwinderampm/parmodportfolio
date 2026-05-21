@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Parmod Chauhan — Brand Case Study</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #070312;
+      --surface: #11111d;
+      --surface-light: #181829;
+      --text: #f4f2ef;
+      --muted: #9f9cab;
+      --accent: #ff2b3a;
+      --border: rgba(255,255,255,0.08);
+
+      --radius: 28px;
+      --max-width: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(255,43,58,0.14), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.04), transparent 20%),
+        var(--bg);
+
+      color: var(--text);
+      font-family: "Montserrat", sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 32px 24px 100px;
+    }
+
+    /* HEADER */
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .logo {
+      font-family: "Montserrat", sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+
+    .back-btn {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: 0.3s ease;
+      font-size: 14px;
+    }
+
+    .back-btn:hover {
+      color: white;
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.09);
+    }
+
+    /* HERO */
+
+    .hero {
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-tag {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-size: 12px;
+      margin-bottom: 22px;
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      margin-bottom: 28px;
+      letter-spacing: -0.05em;
+      max-width: 900px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      transition: 0.3s ease;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
+    }
+
+    /* SECTION */
+
+    .section {
+      padding-top: 50px;
+    }
+
+    .section-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .section-row.reverse .section-image {
+      order: -1;
+    }
+
+    .section-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 12px;
+      margin-bottom: 18px;
+      display: inline-block;
+    }
+
+    .section-content h2 {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1;
+      margin-bottom: 24px;
+      letter-spacing: -0.04em;
+    }
+
+    .section-content p {
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-size: 1.02rem;
+    }
+
+    /* IMAGE */
+
+    .section-image {
+      position: relative;
+    }
+
+    .section-image img {
+      border-radius: 30px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.35),
+        0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    /* CARDS */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.02)
+      );
+
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      transition: 0.35s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,43,58,0.4);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 14px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 18px;
+    }
+
+    .card small {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.85rem;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding-top: 100px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 960px) {
+
+      .section-row {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .section-row.reverse .section-image {
+        order: 0;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        line-height: 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .container {
+        padding-inline: 20px;
+      }
+
+      .header {
+        margin-bottom: 50px;
+      }
+
+      .hero {
+        padding-bottom: 70px;
+      }
+
+      .section {
+        padding-top: 80px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+
+    <header class="header">
+      <div class="logo">Parmod Chauhan</div>
+
+      <a href="index.html" class="back-btn">
+        ← Back to portfolio
+      </a>
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <!-- <span class="hero-tag">Featured Project</span> -->
+
+      <h1>
+        Poster Design
+      </h1>
+
+      <p>
+        A premium brand refresh focused on editorial aesthetics,
+        modern storytelling, packaging direction and launch-ready
+        digital experiences designed for scalability and retail impact.
+      </p>
+
+      <!-- <div class="hero-actions">
+        <a href="Azure%20presentation%20by%20Parmod.pdf"
+           target="_blank"
+           class="btn btn-primary">
+          View Case Study
+        </a>
+
+        <a href="#latest-parent"
+           class="btn btn-secondary">
+          Explore Project
+        </a>
+      </div> -->
+
+    </section>
+
+    <!-- SECTION 1 -->
+
+    <section class="section" id="latest-parent">
+
+  <div class="section-row">
+
+    <div class="section-content">
+
+      <!-- <span class="section-label">
+        Latest Project
+      </span> -->
+
+      <h2>
+        DNA (Song Poster)
+      </h2>
+
+      <p>
+       DNA is a dark, emotionally charged poster built around themes of identity, inheritance, and internal conflict. The design features a haunting close-up of an eye illuminated in deep crimson tones, with the title embedded directly into the sclera through branching vein-like typography. This surreal treatment symbolizes the idea that DNA is not just biological—it carries memory, pain, truth, and legacy.
+The distressed handwritten typography and intense red-black palette create a raw, unsettling atmosphere that aligns with aggressive, introspective musical storytelling. The overall composition evokes mystery, psychological depth, and a sense of confrontation with one’s inner self.
+      </p>
+
+      <!-- <p>
+        The overall experience was designed with a balance of
+        luxury aesthetics and functional communication, helping
+        the brand scale consistently across packaging, retail,
+        presentations and digital platforms.
+      </p> -->
+      <!-- <a href="Fityou%20branding.pdf"
+           target="_blank"
+           class="btn btn-primary">
+          View Case Study
+        </a> -->
+
+    </div>
+
+    <div class="section-image">
+      <img
+        src="images/Dna1.jpg.jpeg"
+        alt="Poster Design"
+      />
+      
+    </div>
+   
+
+  </div>
+
+</section>
+
+    <!-- SECTION 2 -->
+
+    <section class="section" id="latest-parent">
+
+  <div class="section-row reverse">
+
+    <div class="section-content">
+
+
+      <h2>
+       ANGER / CHAOS
+      </h2>
+
+      <p>
+       Raw, explosive energy frozen in a single frame. It captures that moment when emotions stop being contained and start breaking everything around them. The feeling is uncontrollable, not just inside the body but spilling into the environment itself, distorting it. Nothing feels structured anymore—only impact, reaction, and the sharp edge of losing control.
+      </p>
+
+      <!-- <p>
+        The overall experience was designed with a balance of
+        luxury aesthetics and functional communication, helping
+        the brand scale consistently across packaging, retail,
+        presentations and digital platforms.
+      </p> -->
+      <!-- <a href="Final%20reach%20branding.pdf"
+           target="_blank"
+           class="btn btn-primary">
+          View Case Study
+        </a> -->
+
+    </div>
+
+    <div class="section-image">
+      <img
+        src="images/Anger.jpg (1).jpeg"
+        alt="Parmod Total brand"
+      />
+      
+    </div>
+   
+
+  </div>
+
+</section>
+
+
+  <!-- SECTION 3 -->
+
+   <section class="section" id="latest-parent">
+
+  <div class="section-row">
+
+    <div class="section-content">
+
+      <!-- <span class="section-label">
+        Latest Parent
+      </span> -->
+
+      <h2>
+        FEAR / PARANOIA
+      </h2>
+
+      <p>
+        A tense, unsettling moment where fear feels almost physical. The subject looks trapped inside his own thoughts, as if reality itself is closing in on him. Every shadow feels intentional, every sound feels too close, too aware. It’s the sensation of being watched even in absolute emptiness, where the mind starts turning against itself and safety feels like an illusion that’s slowly collapsing.
+        </p>
+      <!-- <p>
+         As my first branding project, Azure played an important role 
+         in shaping my understanding of visual identity systems, brand 
+         consistency, and modern design aesthetics.
+      </p> -->
+      <!-- <a href="Azure%20presentation%20by%20Parmod.pdf"
+           target="_blank"
+           class="btn btn-primary">
+          View Case Study
+        </a> -->
+
+    </div>
+
+    <div class="section-image">
+      <img
+        src="images/f.jpg.jpeg"
+        alt="Parmod Total brand"
+      />
+      
+    </div>
+   
+
+  </div>
+  
+
+</section>
+
+<!-- SECTION 4 -->
+
+    <section class="section" id="latest-parent">
+
+  <div class="section-row reverse">
+
+    <div class="section-content">
+
+
+      <h2>
+       HAPPINESS / EUPHORIA
+      </h2>
+
+      <p>
+       A loud burst of emotion that feels almost too intense to hold. Joy turns chaotic and wild, like happiness spilling out of control. The moment feels weightless, as if gravity briefly forgot its purpose. Everything becomes brighter, faster, louder—like the world is celebrating through the subject instead of around them, and restraint no longer exists.
+      </p>
+
+      <!-- <p>
+        The overall experience was designed with a balance of
+        luxury aesthetics and functional communication, helping
+        the brand scale consistently across packaging, retail,
+        presentations and digital platforms.
+      </p> -->
+      <!-- <a href="Final%20reach%20branding.pdf"
+           target="_blank"
+           class="btn btn-primary">
+          View Case Study
+        </a> -->
+
+    </div>
+
+    <div class="section-image">
+      <img
+        src="images/joy.jpg.jpeg"
+        alt="Parmod Total brand"
+      />
+      
+    </div>
+   
+
+  </div>
+
+</section>
+
+<!-- SECTION 5 -->
+
+   <section class="section" id="latest-parent">
+
+  <div class="section-row">
+
+    <div class="section-content">
+
+      <!-- <span class="section-label">
+        Latest Parent
+      </span> -->
+
+      <h2>
+        EVOLVE
+      </h2>
+
+      <p>
+        Evolve is a conceptual portrait poster that visually explores transformation, self-awareness, and personal growth. The composition features a softly lit human face illuminated by a butterfly-shaped projection, symbolizing metamorphosis and inner awakening.
+The grain-textured vintage treatment adds emotional depth and a nostalgic cinematic quality, while the refined serif typography reinforces themes of elegance and progression. The interplay between shadow and light reflects the journey of change—moving through uncertainty toward self-realization.
+The poster communicates evolution not as a sudden event, but as a gradual and deeply personal process.
+        </p>
+      <!-- <p>
+         As my first branding project, Azure played an important role 
+         in shaping my understanding of visual identity systems, brand 
+         consistency, and modern design aesthetics.
+      </p> -->
+      <!-- <a href="Azure%20presentation%20by%20Parmod.pdf"
+           target="_blank"
+           class="btn btn-primary">
+          View Case Study
+        </a> -->
+
+    </div>
+
+    <div class="section-image">
+      <img
+        src="images/Evolve.jpg.jpeg"
+        alt="Parmod Total brand"
+      />
+      
+    </div>
+   
+
+  </div>
+  
+
+</section>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+      © 2026 Parmod Chauhan — Crafted with premium editorial direction.
+    </footer>
+
+  </div>
+
+</body>
+</html>

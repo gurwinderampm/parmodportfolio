@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Projects — Stormi Porto Portfolio</title>
+<meta name="description" content="Explore featured projects and case studies." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   TOKENS & RESET
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f1ebe0;
+  --bg-2: #ebe4d6;
+  --ink: #1a1612;
+  --ink-2: #4b4339;
+  --muted: #7a6f60;
+  --accent: #c8442a;
+  --accent-2: #e26d3f;
+  --line: rgba(26, 22, 18, 0.12);
+  --serif: 'Montserrat', sans-serif;
+  --sans: 'Montserrat', sans-serif;
+  --maxw: 1320px;
+  --ease: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { background: none; border: 0; cursor: pointer; font: inherit; color: inherit; }
+
+/* GRAIN */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 250;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+}
+
+/* HEADER */
+.header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 90;
+  padding: 22px 0;
+  background: rgba(241, 235, 224, 0.95);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 32px;
+  gap: 32px;
+}
+
+.logo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.back-link {
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  transition: all 0.3s var(--ease-out);
+}
+
+.back-link:hover {
+  transform: translateY(-2px);
+  background: var(--accent);
+}
+
+/* LAYOUT */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; position: relative; }
+@media (max-width: 720px) { .wrap { padding: 0 20px; } }
+
+/* SECTION HEAD */
+section { padding: 30px 0; position: relative; }
+.eyebrow {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--muted); }
+h1, h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+h1 em, h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* HERO */
+.hero {
+  padding: 160px 0 60px;
+  text-align: center;
+}
+.hero h1 {
+  margin-bottom: 28px;
+}
+.hero-sub {
+  max-width: 580px;
+  margin: 0 auto;
+  font-size: 17px;
+  color: var(--ink-2);
+}
+
+/* PROJECTS SECTION */
+.projects-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(26, 22, 18, 0.08);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.35s var(--ease);
+}
+
+.project-card:hover {
+  background: rgba(26, 22, 18, 0.12);
+  border-color: var(--accent);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(200, 68, 42, 0.15);
+}
+
+.project-slider {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-2);
+  padding: 0;
+}
+
+.slides {
+  position: relative;
+}
+
+.project-slider {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-2);
+  padding: 0;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  display: none;
+  transition: opacity 0.4s ease;
+}
+
+.slide.active {
+  display: block;
+}
+
+.project-card:hover .slide.active {
+  transform: scale(1.03);
+  filter: saturate(1.1);
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  font-size: 18px;
+  z-index: 5;
+  transition: 0.3s;
+}
+
+.slide-btn:hover {
+  background: var(--accent);
+}
+
+.prev {
+  left: 24px;
+}
+
+.next {
+  right: 24px;
+}
+
+.project-description {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-description h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.project-description p {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+.project-card .project-tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.project-card .project-tags span {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(200, 68, 42, 0.12);
+  color: var(--accent);
+  font-size: 12px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.project-btn {
+  align-self: flex-start;
+  margin-top: 16px;
+  padding: 12px 24px;
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s var(--ease);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-btn:hover {
+  background: var(--accent-2);
+  transform: translateX(4px);
+}
+
+/* TESTIMONIALS */
+.testi-card {
+  background: rgba(26, 22, 18, 0.06);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 60px 48px;
+  text-align: center;
+  position: relative;
+}
+
+.testi-stage {
+  position: relative;
+  min-height: 200px;
+}
+
+.testi-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out);
+}
+
+.testi-slide.active {
+  opacity: 1;
+  position: static;
+}
+
+.testi-quote {
+  font-family: "Montserrat", sans-serif;
+  font-size: 28px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  font-weight: 300;
+  font-variation-settings: "SOFT" 50;
+  margin-bottom: 24px;
+}
+
+.testi-quote em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.testi-author {
+  font-size: 14px;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.testi-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.testi-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(26, 22, 18, 0.2);
+  transition: all 0.3s var(--ease);
+  cursor: pointer;
+}
+
+.testi-dots button.active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+/* RESPONSIVE */
+@media (max-width: 880px) {
+  section { padding: 80px 0; }
+  .projects-grid { grid-template-columns: 1fr 1fr; }
+  h1, h2 { font-size: clamp(32px, 5vw, 64px); }
+}
+
+@media (max-width: 640px) {
+  section { padding: 60px 0; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-images { grid-template-columns: 1fr; }
+  .project-images img { height: 220px; }
+  .testi-card { padding: 40px 24px; }
+  .testi-quote { font-size: 22px; }
+  .header-inner { padding: 0 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="back-link">← Back Home</a>
+  </div>
+</header>
+
+<section class="hero" style="padding-top: 160px;">
+  <div class="wrap">
+    <!-- <span class="eyebrow">Featured projects</span> -->
+    <h1>Featured <em>Projects</em>.</h1>
+    <p class="hero-sub">Dive into our featured projects showcasing strategic design, modern platforms, and innovative solutions built to drive real results.</p>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section id="featured-projects">
+  <div class="wrap">
+    <div class="projects-grid reveal-stagger">
+      <!-- AMPM Solutions Project -->
+      <div class="project-card">
+        <div class="project-slider">
+  <div class="slides">
+    <img class="slide active" src="images/Ampm-1-.jpg.jpeg" alt="AMPM Solutions - Image 1" />
+    <img class="slide" src="images/Ampm-2-.jpg.jpeg" alt="AMPM Solutions - Image 2" />
+  </div>
+
+  <button class="slide-btn prev">←</button>
+  <button class="slide-btn next">→</button>
+</div>
+        <div class="project-description">
+          <h3>AMPM Solutions</h3>
+          <p>For the AMPM Solutions website, I handled all graphic and image-related design work across the entire platform, including banners, visuals, and brand elements to maintain a clean and professional digital presence.
+
+The focus was on creating a structured and cohesive visual identity aligned with the brand’s services.</p>
+          <div class="project-tags">
+            <span>Agency</span>
+            <span>2025</span>
+          </div>
+          <a href="https://ampmsol.com/" class="project-btn">View Website <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Wegosmile Project -->
+      <div class="project-card">
+        <div class="project-slider">
+  <div class="slides">
+    <img class="slide active" src="images/wegosmile.jpg.jpeg" alt="AMPM Solutions - Image 1" />
+    <img class="slide" src="images/wegosmile-2-.jpg.jpeg" alt="AMPM Solutions - Image 2" />
+  </div>
+
+  <button class="slide-btn prev">←</button>
+  <button class="slide-btn next">→</button>
+</div>
+        <div class="project-description">
+          <h3>Wegosmile</h3>
+          <p>For the WegoSmile website, I worked on all graphic and image-related design across the platform, including banners, product visuals, brand assets, and social media creatives.
+
+The goal was to create a modern, clean, and consistent visual identity that improves product presentation and user experience.</p>
+          <div class="project-tags">
+            <span>Skincare</span>
+            <span>2025</span>
+          </div>
+          <a href="https://www.wegosmile.com/" class="project-btn">View Website <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Reach Logistics Project -->
+      <div class="project-card">
+        <div class="project-slider">
+  <div class="slides">
+    <img class="slide active" src="images/Reach-1.jpg.jpeg" alt="AMPM Solutions - Image 1" />
+    <img class="slide" src="images/Reach-2.jpg.jpeg" alt="AMPM Solutions - Image 2" />
+  </div>
+
+  <button class="slide-btn prev">←</button>
+  <button class="slide-btn next">→</button>
+</div>
+        <div class="project-description">
+          <h3>Reach Logistics</h3>
+          <p>For the Reach Logistics website, I handled all graphic and image-related design work across the entire platform, including banners, visuals, and brand-consistent web assets to create a clean and professional look.
+
+My focus was to maintain a strong, cohesive visual identity that enhances user experience and aligns with the brand.</p>
+          <div class="project-tags">
+            <span>Logistics</span>
+            <span>2026</span>
+          </div>
+          <a href="https://reachlogisticsltd.co.uk/" class="project-btn">View Website <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- TESTIMONIALS -->
+<!-- <section class="testi" style="padding-top: 80px;">
+  <div class="wrap">
+    <div style="text-align:center; margin-bottom: 60px;">
+      <span class="eyebrow" style="justify-content:center;">Kind words</span>
+      <h2>What clients <em>say</em>.</h2>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stage" id="testiStage">
+        <div class="testi-slide active">
+          <p class="testi-quote">Stormi just <em>gets it</em>. Half the time I didn't even need to brief her — she'd come back with something better than I'd imagined. Hire her before someone else does.</p>
+          <p class="testi-author"><strong>Mira Chen</strong> · Founder, Petal &amp; Roam</p>
+        </div>
+        <div class="testi-slide">
+          <p class="testi-quote">Honestly the smoothest design process I've been through. <em>Sharp instincts</em>, zero fluff, ships on time. The new site lifted conversions by 38% in month one.</p>
+          <p class="testi-author"><strong>Daniel Ortiz</strong> · CEO, Blanked</p>
+        </div>
+        <div class="testi-slide">
+          <p class="testi-quote">Brought our brand back from the dead. <em>Genuinely magical work</em> — strategic, beautiful, and weirdly fun to work on together.</p>
+          <p class="testi-author"><strong>Liv Tanaka</strong> · Creative Lead, Red Label</p>
+        </div>
+      </div>
+      <div class="testi-dots" id="testiDots">
+        <button class="active" data-i="0" aria-label="Testimonial 1"></button>
+        <button data-i="1" aria-label="Testimonial 2"></button>
+        <button data-i="2" aria-label="Testimonial 3"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Testimonials carousel
+const testiDots = document.querySelectorAll('#testiDots button');
+const testiSlides = document.querySelectorAll('.testi-slide');
+const testiStage = document.getElementById('testiStage');
+
+testiDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const index = parseInt(dot.dataset.i);
+    testiSlides.forEach(slide => slide.classList.remove('active'));
+    testiDots.forEach(d => d.classList.remove('active'));
+    testiSlides[index].classList.add('active');
+    dot.classList.add('active');
+  });
+}); -->
+<!-- </script> -->
+ <script>
+document.querySelectorAll('.project-slider').forEach(slider => {
+
+  const slides = slider.querySelectorAll('.slide');
+  const nextBtn = slider.querySelector('.next');
+  const prevBtn = slider.querySelector('.prev');
+
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach(slide => {
+      slide.classList.remove('active');
+    });
+
+    slides[index].classList.add('active');
+  }
+
+  nextBtn.addEventListener('click', () => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  });
+
+});
+</script>
+
+</body>
+</html>
